@@ -11,7 +11,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Download, ArrowLeft, HelpCircle } from "lucide-react";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 
-const VideoPlayerUI = () => {
+const VideoPlayer = () => {
   const { state } = useLocation();
 
   const network = useNetwork();
@@ -82,4 +82,4 @@ const VideoPlayerUI = () => {
   );
 };
 
-export default VideoPlayerUI;
+export default VideoPlayer;

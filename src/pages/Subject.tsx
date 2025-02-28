@@ -8,16 +8,20 @@ import MainLayout from "@/layouts/MainLayout";
 import BackButton from "@/components/BackButton";
 import ModulesList from "@/components/ModulesList";
 import CurrentCourse from "@/components/CurrentCourse";
+import Spinner from "@/components/Spinner";
+import NoInternet from "@/components/NoInternet";
 
 const Subject = () => {
   const { id } = useParams<SubjectPageParamType>();
   const { state } = useLocation();
 
-  const { data, error } = useData<ModuleType[]>("modules.php", {
+  const { data, error, isLoading } = useData<ModuleType[]>("modules.php", {
     params: {
       subject_id: id,
     },
   });
+
+  console.log(error);
 
   return (
     <MainLayout>
@@ -37,9 +41,15 @@ const Subject = () => {
 
       <CurrentCourse title={state?.title || ""} />
 
-      <ModulesList modules={data || []} />
+      <ModulesList modules={data || []} title={state?.title || ""} />
 
-      {error?.response?.status === 404 && <div>Not found</div>}
+      {isLoading && <Spinner />}
+
+      {error?.message === "Network Error" && (
+        <section className="flex items-center justify-center w-full my-15  ">
+          <NoInternet reason="failed to fetch the modules" />
+        </section>
+      )}
     </MainLayout>
   );
 };

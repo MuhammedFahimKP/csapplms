@@ -20,6 +20,7 @@ export interface NoInternetConnectionPropType {
 
 export interface ModuleListPropType {
   modules: ModuleType[];
+  title: Subject["title"];
 }
 export interface CurrentCoursePropType {
   title: Subject["title"];

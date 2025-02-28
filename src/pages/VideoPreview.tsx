@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { steps } from "@/lib/constants";
+import { goBack } from "@/lib/utils";
 
 import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 
@@ -17,7 +18,7 @@ const VideoPreview = () => {
     <section className="flex flex-col min-h-screen bg-purple-100 w-full   ">
       <section className="w-full m-auto lg:w-sm ">
         <header className="p-4 flex items-center">
-          <button className="p-2">
+          <button className="p-2" onClick={goBack}>
             <ChevronLeft size={24} color="#333" />
           </button>
           <section className="mx-auto">
